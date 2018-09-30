@@ -45,10 +45,10 @@
           <tr *ngFor="let product of filteredData">
             <td><img src="{{product.imageUrl}}" *ngIf="this.hidden" width="50px" /></td>
             <td><h5>{{product.productName}}</h5></td>
-            <td><h5>{{product.productCode}}</h5></td>
+            <td><h5>{{product.productCode | removeHyphen:'-'}}</h5></td>
             <td><h5>{{product.releaseDate}}</h5></td>
-            <td><h5>{{product.price}}</h5></td>
-            <td><h5>{{product.starRating}}</h5></td>
+            <td><h5>{{product.price | currency:'EUR':true:'1.2-2'}}</h5></td>
+            <td><h5><app-starrating *ngIf="product.starRating" [rating]="product.starRating"></app-starrating></h5></td>
           </tr>
         </tbody>
       </table>
