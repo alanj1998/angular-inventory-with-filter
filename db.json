@@ -1,5 +1,4 @@
-{
-    "products": [
+[
         {
             "productId": 1,
             "productName": "Leaf Rake",
@@ -47,8 +46,7 @@
             "releaseDate": "October 15, 2015",
             "description": "Standard two-button video game controller",
             "price": 35.95,
-            "starRating": 4.6,
+            "starRating": 1.2,
             "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
         }
     ]
-}
