@@ -1,0 +1,18 @@
+#navbarSupportedContent ul {
+    float: right !important;
+}
+li {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#navbarSupportedContent ul li:hover{
+    background-color: #3890ee;
+    transition: ease 500ms;
+    color: white;   
+}
+
+.active{
+    background-color: #3890ee;
+    color: white;
+}

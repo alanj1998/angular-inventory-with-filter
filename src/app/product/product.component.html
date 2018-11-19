@@ -1,0 +1,49 @@
+<div class='card'>
+  <div class='card-body'>
+    <h5 class="card-title">Enter the details on the product and press submit</h5>
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control" id="productID" name="productID" placeholder="Enter Product ID"
+          [(ngModel)]='productId'>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter Product Name"
+          [(ngModel)]='productName'>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="productCode" name="productCode" placeholder="Enter Product Code"
+          [(ngModel)]='productCode'>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="releaseDate" name="releaseDate" placeholder="Enter Product Release Date"
+          [(ngModel)]='releaseDate'>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="description" name="description" placeholder="Enter Product Description"
+          [(ngModel)]='description'>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="price" name="price" placeholder="Enter Product Price" [(ngModel)]='price'>
+      </div>
+      <div class="form-group">
+        <input type="range" min="0" max="5" step="0.1" (change)="this.changeSliderValue(starRates.value)" #starRates
+          class="form-control" id="rating" [(ngModel)]='starRating' name="stars">
+        <div class="text-center">Currently on: {{this.starRating | number:'1.1-1'}}</div>
+      </div>
+      <div class="form-group" fxLayout="row" fxLayoutGap="20px">
+        <input fxFlex="60" type="text" class="form-control" id="imageStr" placeholder="Enter Image Name" [(ngModel)]="listFilter"
+          name="listFilter">
+        <button fxFlex="20" mat-raised-button color="primary" type="submit" (click)="showHideDisplayClipartComponent()">Find
+          Images</button>
+      </div>
+      <div class="form-group">
+        <app-display-clipart (addImageStringEE)="addImageStringToFormTextBox($event)" *ngIf="showDisplayClipartComponent"
+          [imageStr]='listFilter'></app-display-clipart>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="Enter Image URL" [(ngModel)]='imageUrl'>
+      </div>
+      <button type="submit" (click)="save()" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

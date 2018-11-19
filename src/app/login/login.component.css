@@ -1,0 +1,21 @@
+@media only screen and (max-width: 450px) {
+    .outerCard { 
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 451px) and (max-width: 768px){
+    .outerCard {
+        width: 75%;
+    }
+}
+
+@media only screen and (min-width: 769px){
+    .outerCard {
+        width: 50%;
+    }
+}
+
+.provider {
+    cursor: pointer;
+}
