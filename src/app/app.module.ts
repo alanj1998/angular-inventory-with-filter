@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,6 +17,13 @@ import { RouterModule, Routes } from "@angular/router";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { firebaseConfig } from "../environments/environment";
+import { NotificationsComponent } from './notifications/notifications.component';
+import { MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material/';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './auth-guard.guard';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 library.add(faStar)
 
@@ -24,19 +31,31 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'products'
+    redirectTo: 'home',
+    canActivate: [AuthGuard]
   },
   {
-    path: 'products',
-    component: ProductListComponent
+    path: 'home',
+    component: ProductListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'productadd',
-    component: ProductComponent
+    component: ProductComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
   {
     path: '**',
-    component: ErrorPageComponent
+    component: ErrorPageComponent,
+    canActivate: [AuthGuard]
   }
 ]
 @NgModule({
@@ -47,7 +66,10 @@ const routes: Routes = [
     StarratingComponent,
     ProductComponent,
     ErrorPageComponent,
-    NavbarComponent
+    NavbarComponent,
+    NotificationsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +78,13 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [GetDataService],
   bootstrap: [AppComponent]

@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
     this.hidden = true;
-    this.message = "Hide Images";
+    this.message = "hide";
     this._httpService.getData().subscribe(element => {
       this.data = element;
       this.filteredData = this.data;
@@ -45,11 +45,17 @@ export class ProductListComponent implements OnInit {
   toggleImages(): void {
     if(this.hidden) {
       this.hidden = false;
-      this.message = 'Show Images';
+      this.message = 'show';
     }
     else {
       this.hidden = true;
-      this.message = 'Hide Images';
+      this.message = 'hide';
     }
+  }
+
+  
+  delete(id: string) {
+    console.log('Deleting with id ' + id)
+    this._httpService.deleteData(id);
   }
 }

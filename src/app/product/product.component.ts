@@ -25,6 +25,7 @@ export class ProductComponent implements OnInit {
       this.input.imageUrl = "https://" + this.input.imageUrl;
     }
     this._httpService.sendData(this.input);
+    this._router.navigateByUrl("/products");
   }
 
   changeSliderValue(value : number) {
