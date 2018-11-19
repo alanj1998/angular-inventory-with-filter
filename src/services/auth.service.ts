@@ -9,7 +9,6 @@ import * as firebase from 'firebase/';
   providedIn: 'root'
 })
 export class AuthService {
-
   private user: Observable<firebase.User>;
   loggedInStatus: boolean = false;
 
