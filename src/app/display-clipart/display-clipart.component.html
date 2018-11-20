@@ -3,7 +3,7 @@
     <mat-card-header>
       {{image.title}}
     </mat-card-header>
-    <img class="image" mat-card-md-image [src]="image.svg.url" title="image.title">
+    <img class="image" mat-card-md-image height="100" width="100" [src]="image.svg.url" title="image.title">
 
     <mat-card-actions fxLayoutAlign="center end">
       <button mat-raised-button color="primary" (click)="selectImage(image.svg.url)">Use Image</button>

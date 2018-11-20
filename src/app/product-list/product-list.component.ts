@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit {
   message: string
 
   constructor(private _httpService: GetDataService) {
-    
+
   }
 
   ngOnInit() {
@@ -30,20 +30,20 @@ export class ProductListComponent implements OnInit {
   setFilter(filter: string): void {
     this.filter = filter;
 
-    if(filter == "") {
+    if (filter == "") {
       this.filteredData = this.data;
     }
     else {
       this.filteredData = []
       this.data.forEach(element => {
-        if(element.productName.toLowerCase().includes(filter.toLowerCase()))
+        if (element.productName.toLowerCase().includes(filter.toLowerCase()))
           this.filteredData.push(element)
       })
     }
   }
 
   toggleImages(): void {
-    if(this.hidden) {
+    if (this.hidden) {
       this.hidden = false;
       this.message = 'show';
     }
@@ -53,9 +53,8 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-  
+
   delete(id: string) {
-    console.log('Deleting with id ' + id)
     this._httpService.deleteData(id);
   }
 }
