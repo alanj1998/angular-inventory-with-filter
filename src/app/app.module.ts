@@ -21,7 +21,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatListModule } from '@angular/material/';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { AuthGuard } from './auth-guard.guard';
+import { AuthGuard } from 'src/services/auth-guard.guard';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DisplayClipartComponent } from './display-clipart/display-clipart.component'

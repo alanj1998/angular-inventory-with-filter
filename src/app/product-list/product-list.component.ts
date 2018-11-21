@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../../services/get-data.service';
 import { IProduct } from '../../interfaces/IProduct';
-import { NotifyService } from 'src/services/notify.service';
 
 @Component({
   selector: 'product-list',

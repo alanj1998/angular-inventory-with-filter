@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { ClipartService } from '../clipart.service';
+import { ClipartService } from 'src/services/clipart.service';
 import { IOpenClipArt } from 'src/interfaces/IOpenClipArt';
 
 @Component({
