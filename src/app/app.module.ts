@@ -25,6 +25,8 @@ import { AuthGuard } from './auth-guard.guard';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DisplayClipartComponent } from './display-clipart/display-clipart.component'
+import { Ng6NotifyPopupModule } from 'ng6-notify-popup'
+import { FlexLayoutModule } from "@angular/flex-layout"
 
 library.add(faStar)
 
@@ -88,7 +90,9 @@ const routes: Routes = [
     MatButtonModule,
     MatListModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    Ng6NotifyPopupModule.forRoot(),
+    FlexLayoutModule
   ],
   providers: [GetDataService],
   bootstrap: [AppComponent]
