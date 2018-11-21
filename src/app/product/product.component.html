@@ -30,7 +30,7 @@
           class="form-control" id="rating" [(ngModel)]='starRating' name="stars">
         <div class="text-center">Currently on: {{this.starRating | number:'1.1-1'}}</div>
       </div>
-      <div class="form-group" fxLayout="row" fxLayoutGap="20px">
+      <div class="form-group">
         <input fxFlex="60" type="text" class="form-control" id="imageStr" placeholder="Enter Image Name" [(ngModel)]="listFilter"
           name="listFilter">
         <button fxFlex="20" mat-raised-button color="primary" type="submit" (click)="showHideDisplayClipartComponent()">Find
@@ -41,7 +41,8 @@
           [imageStr]='listFilter'></app-display-clipart>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="Enter Image URL" [(ngModel)]='imageUrl'>
+        <input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="Enter Image URL" disabled="true"
+          [(ngModel)]='imageUrl'>
       </div>
       <button type="submit" (click)="save()" class="btn btn-primary">Submit</button>
     </form>

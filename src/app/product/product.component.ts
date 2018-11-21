@@ -56,6 +56,7 @@ export class ProductComponent implements OnInit {
 
   addImageStringToFormTextBox(event): boolean {
     this.imageUrl = event;
+    this.showHideDisplayClipartComponent()
     return false
   }
 }

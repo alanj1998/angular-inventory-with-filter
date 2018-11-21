@@ -103,10 +103,10 @@
     "@angular-devkit/core" "0.8.3"
     rxjs "~6.2.0"
 
-"@angular/animations@^6.1.0":
-  version "6.1.9"
-  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-6.1.9.tgz#1d87469e6f6b89a8713570dfbe97700ea85bd007"
-  integrity sha512-bPl5fNn4ja1S2Bn4xRT93wYqx0KjvZrX1FjpQltkf9dMmAdVpYj7spy+eYgClAMfZMWv7pa70F+FtSDkWbgRsA==
+"@angular/animations@^6.1.10":
+  version "6.1.10"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-6.1.10.tgz#4ab9b9a6c25e0cca781588700daa9efc33a722e4"
+  integrity sha512-dd/lq7kw3uwfHPICan8psu2nthuUpp7PvMLuNIm0XxObZ4oNs0ls6uxKEDPnEkRKoGdiJpvmsyzZZN9ACMPEAA==
   dependencies:
     tslib "^1.9.0"
 
@@ -5204,6 +5204,13 @@ neo-async@^2.5.0:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.2.tgz#489105ce7bc54e709d736b195f82135048c50fcc"
   integrity sha512-vdqTKI9GBIYcAEbFAcpKPErKINfPF5zIuz3/niBfq8WUZjpT2tytLlFVrBgWdOtqI4uaA/Rb6No0hux39XXDuw==
+
+ng6-notify-popup@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/ng6-notify-popup/-/ng6-notify-popup-0.0.2.tgz#d20807e15caed88d3fda6242e9cd7e7b26b08bb8"
+  integrity sha512-CWg0Wf37bqrSSv+bJ+3zZfoSwzvcVk9JZvsqbOJQ+vC0E7nUU+Zhgqp7mAIB+YfqF/qFXLQpStFXp/BgEuFi3Q==
+  dependencies:
+    tslib "^1.9.0"
 
 nice-try@^1.0.4:
   version "1.0.5"
