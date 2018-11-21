@@ -19,6 +19,7 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
+    //On init, get all data and hide images
     this.hidden = true;
     this.message = "hide";
     this._httpService.getData().subscribe(element => {
@@ -27,6 +28,10 @@ export class ProductListComponent implements OnInit {
     })
   }
 
+  /**
+   * Method used to filter products in the list
+   * @param filter String used as product filter
+   */
   setFilter(filter: string): void {
     this.filter = filter;
 
@@ -42,6 +47,9 @@ export class ProductListComponent implements OnInit {
     }
   }
 
+  /**
+   * Method used to toggle images
+   */
   toggleImages(): void {
     if (this.hidden) {
       this.hidden = false;
@@ -53,7 +61,10 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-
+  /**
+   * Method used to delete product from database
+   * @param id Id of product to be deleted
+   */
   delete(id: string) {
     this._httpService.deleteData(id);
   }

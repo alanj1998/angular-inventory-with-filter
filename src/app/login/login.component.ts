@@ -24,6 +24,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Login method used for logging in with email and password
+   */
   login() {
     this.auth.doLogin(this.form.value)
       .then(res => {
@@ -35,6 +38,9 @@ export class LoginComponent implements OnInit {
       })
   }
 
+  /**
+   * Login method used to login with facebook
+   */
   loginWithFacebook() {
     this.auth.doFacebookAuth().then(() => {
       this.showWelcomeMessage()
@@ -42,6 +48,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  /**
+   * Login method used to login with google
+   */
   loginWithGoogle() {
     this.auth.doGoogleAuth().then(() => {
       this.showWelcomeMessage()
@@ -49,7 +58,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  showWelcomeMessage() {
+  /**
+   * Method used for showing welcome message once user logs in
+   */
+  private showWelcomeMessage() {
     this._notify.showSuccess("Welcome back!")
   }
 }

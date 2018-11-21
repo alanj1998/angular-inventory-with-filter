@@ -4,54 +4,29 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { NotificationService } from './notification.service';
 import * as firebase from 'firebase/';
+import { NotifyService } from './notify.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private user: Observable<firebase.User>;
   loggedInStatus: boolean = false;
 
-  constructor(private _firebaseAuth: AngularFireAuth, private router: Router, private notifier: NotificationService) {
-    this.user = _firebaseAuth.authState;
-  }
+  constructor(private _firebaseAuth: AngularFireAuth, private router: Router, private notifier: NotifyService) { }
 
-  signup(email: string, password: string, name: string) {
-    // clear all messages
-    this.notifier.display(false, '');
-    this._firebaseAuth
-      .auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((res) => {
-        this.sendEmailVerification();
-        const message = 'A verification email has been sent, please check your email and follow the steps!';
-        this.notifier.display(true, message);
-        return firebase.database().ref('users/' + res.user.uid).set({
-          email: res.user.email,
-          uid: res.user.uid,
-          registrationDate: new Date().toString(),
-          name: name
-        })
-          .then(() => {
-            firebase.auth().signOut();
-            this.router.navigate(['login']);
-          });
-      })
-      .catch(err => {
-        console.log(err);
-        this.notifier.display(true, err.message);
-      });
-  }
-
+  /**
+   * Method used to send verification email to user
+   */
   sendEmailVerification() {
     this._firebaseAuth.authState.subscribe(user => {
       user.sendEmailVerification()
-        .then(() => {
-          console.log('email sent');
-        });
     });
   }
 
+  /**
+   * Method used for registration
+   * @param value User filled out form
+   */
   doRegister(value) {
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
@@ -61,6 +36,10 @@ export class AuthService {
     })
   }
 
+  /**
+   * Method used for logging in
+   * @param value User login form values
+   */
   doLogin(value) {
     return new Promise<any>((resolve, reject) => {
       firebase.auth().signInWithEmailAndPassword(value.email, value.password)
@@ -71,6 +50,9 @@ export class AuthService {
     })
   }
 
+  /**
+   * Method used for logging out
+   */
   doLogout() {
     return new Promise((resolve, reject) => {
       if (firebase.auth().currentUser) {
@@ -84,13 +66,23 @@ export class AuthService {
     });
   }
 
+  /**
+   * Method used for checking if user is logged in
+   */
   isLoggedIn(): boolean {
     return this.loggedInStatus;
   }
 
+  /**
+   *@async Method used to login using Facebook
+   */
   async doFacebookAuth() {
     await this._firebaseAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(() => this.loggedInStatus = true)
   }
+
+  /**
+   * @async Method used to login using Google
+   */
   async doGoogleAuth() {
     await this._firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(() => this.loggedInStatus = true)
   }

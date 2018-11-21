@@ -11,10 +11,13 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 export class GetDataService {
   url: string = "http://localhost:3000/products";
   productsCollection: AngularFirestoreCollection<IProduct>
-  constructor(private _http: HttpClient, private _af: AngularFirestore) {
+  constructor(private _af: AngularFirestore) {
     this.productsCollection = this._af.collection<IProduct>("products");
   }
 
+  /**
+   * Method used to get products from database
+   */
   getData(): Observable<IProduct[]> {
     let products = this.productsCollection.snapshotChanges().pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data() as IProduct;
@@ -26,10 +29,18 @@ export class GetDataService {
     return products;
   }
 
-  sendData(data: IProduct): void {
-    this.productsCollection.add(data);
+  /**
+   * Method used for adding products to db
+   * @param data Product to be added
+   */
+  sendData(data: IProduct): Promise<any> {
+    return this.productsCollection.add(data);
   }
 
+  /**
+   * Method used for deleting products from db
+   * @param id Id of product to be deleted
+   */
   deleteData(id: string) {
     this.productsCollection.doc(id).delete()
   }

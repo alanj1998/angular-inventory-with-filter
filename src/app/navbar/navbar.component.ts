@@ -15,13 +15,20 @@ export class NavbarComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router, private _notify: NotifyService) { }
 
   ngOnInit() {
+    // On init check if the user is logged in - used for navbar styling
     this.loggedIn = this.isLoggedIn()
   }
 
+  /**
+   * Method used to check if user is logged in
+   */
   isLoggedIn() {
     return this.auth.isLoggedIn()
   }
 
+  /**
+   * Method used to logout from the app
+   */
   logout() {
     this.auth.doLogout()
     this.loggedIn = this.isLoggedIn()
@@ -29,6 +36,9 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['login'])
   }
 
+  /**
+   * Method used in mobile view. Used to toggle navbar on and off
+   */
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen
   }

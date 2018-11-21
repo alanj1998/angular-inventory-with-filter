@@ -14,6 +14,10 @@ export class ClipartService {
     private _http: HttpClient
   ) { }
 
+  /**
+   * Getting images from Clipart Service
+   * @param imageStr String used for filtering
+   */
   getImageList(imageStr: string): Observable<IOpenClipArt> {
     console.log(`Got this text: ${imageStr}`)
     return this._http.get<IOpenClipArt>(this.url + imageStr)

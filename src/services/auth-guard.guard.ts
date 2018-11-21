@@ -6,19 +6,21 @@ import { AuthService } from 'src/services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Auth guard used to check if user is logged in
+ */
 export class AuthGuard implements CanActivate {
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router) { }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
-    ): Observable<boolean> | Promise<boolean> | boolean {
-      if (this.auth.isLoggedIn()){
-        return true
-      }
-      else
-      {
-        this.router.navigate(['login'])
-        return false
-      }
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    if (this.auth.isLoggedIn()) {
+      return true
+    }
+    else {
+      this.router.navigate(['login'])
+      return false
+    }
   }
 }

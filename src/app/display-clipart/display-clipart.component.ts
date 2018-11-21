@@ -17,13 +17,17 @@ export class DisplayClipartComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    //Once component is initialised get images from the passed in image string
     this._clipArt.getImageList(this.imageStr).subscribe(data => {
       this.clipArtData = data
     })
   }
 
+  /**
+   * Method used to attatch image to product add form
+   * @param imageStr URL to the image
+   */
   selectImage(imageStr): boolean {
-    console.log(`Selected image: ${imageStr}`)
     this.addImageStringEE.emit(imageStr)
     return false
   }

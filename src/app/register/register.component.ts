@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    //On init bind form group to variable
     this.form = this._fb.group({
       email: ['', Validators.required], // first string is to prepopulate the form, second is an array of validators
       password: ['', Validators.required],
@@ -28,6 +29,11 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  /**
+   * Method used for registration
+   * If all goes well, user is notified and send to login screen
+   * If not user is notified with red error
+   */
   register() {
     this._authService.doRegister(this.form.value).then(() => this._router.navigate(['login'])).then(() => {
       this._notify.showSuccess("You have registred successfully!")
