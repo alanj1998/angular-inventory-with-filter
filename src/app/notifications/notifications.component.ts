@@ -7,10 +7,12 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./notifications.component.css']
 })
 export class NotificationsComponent implements OnInit {
+  /*
+  DEPRECATED SERVICE
+  */
   constructor() { }
   display: boolean
   ngOnInit() {
   }
-
 
 }
